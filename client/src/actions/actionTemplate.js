@@ -1,20 +1,13 @@
-import {ADD, DELETE, PLUS} from './actionTypes'
+import {ADD, DELETE} from './actionTypes'
 
-export const plusTemplate = (countValue) => {
-    return{
-        type: PLUS,
-        count: countValue
-    }
-}
-
-export const addTemplate = (obj) => {
+export const addProduct = (obj) => {
     return {
         type: ADD,
         data: obj
     }
 }
 
-export const deleteTemplate = (id) => {
+export const deleteProduct = (id) => {
     return{
         type: DELETE,
         id

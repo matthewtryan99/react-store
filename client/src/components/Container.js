@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import ItemCard from './ItemCards'
+import '../css/main.css'
+
 export class Container extends Component {
 
     state = {
@@ -33,9 +36,10 @@ export class Container extends Component {
                     // console.log(product.name)
                     let imgUrl = "http://" + product.imageUrl
                     return (
-                    <div>
-                        {product.name}
-                        <img src={imgUrl} alt="Smiley face" key={product.id}></img>
+                    <div className="itemGrid">
+                        <div>
+                            <ItemCard product={product} imgUrl={imgUrl} />
+                        </div>
                     </div>
                     )
 
@@ -48,14 +52,17 @@ export class Container extends Component {
 }
 
 let mapStateToProps = (state) => {
-    return{
+    return {
+        totalCost: state.totalCost,
+        productCart: state.productCart
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
+    
     return{
-
-    }
+        // onAddProduct : (productData) => dispatch(addProduct(productData))
+        }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container)
