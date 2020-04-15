@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import ItemCard from './ItemCards'
 import '../css/main.css'
+import queryString from 'query-string'
 
 export class Container extends Component {
 
@@ -11,7 +12,9 @@ export class Container extends Component {
     }
 
     componentDidMount(){
-        fetch("https://asos2.p.rapidapi.com/products/v2/list?country=US&currency=USD&sort=freshness&lang=en-US&sizeSchema=US&offset=0&categoryId=4209&limit=48&store=US", {
+        const value = queryString.parse(this.props.location.search)
+
+        fetch(`https://asos2.p.rapidapi.com/products/v2/list?country=US&currency=USD&sort=freshness&lang=en-US&sizeSchema=US&offset=${24 * (value.page - 1)}&categoryId=4209&limit=24&store=US`, {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "asos2.p.rapidapi.com",
@@ -26,43 +29,42 @@ export class Container extends Component {
         .catch(err => {
             console.log(err);
         });
+
+        let nextPage = parseInt(value.page) + 1
+        this.nextPageUrl = "/store/?page=" + nextPage.toString()
+        let previousPage = parseInt(value.page) - 1
+        this.previousPage = "/store/?page=" + previousPage.toString()
+        this.previous = "<"
+        this.counter = 0
     }
     render() {
         return (
-            <>
+            <div className="d-flex screenWidth">
                 {this.state.loading ? (<div>loading...</div>) : 
                 (
-                this.state.products.map(product => {
+                this.state.products.map((product, index) => {
                     // console.log(product.name)
                     let imgUrl = "http://" + product.imageUrl
+                    this.counter = this.counter + 1
                     return (
-                    <div className="itemGrid">
+                    <div className="col-2"key={index}>
                         <div>
-                            <ItemCard product={product} imgUrl={imgUrl} />
+                            <ItemCard key={product.id} product={product} imgUrl={imgUrl} />
                         </div>
                     </div>
                     )
-
                 })
                 )
                 }
-            </>
+                <div class="d-flex screenWidth justify-content-end">
+                <div class="pageButtonSize d-flex justify-content-between">
+                    <a className="pageButtonFont" href={this.previousPage}> {this.previous} </a>    <a className="pageButtonFont" href="/store/?page=1">1</a> <a className="pageButtonFont" href="/store/?page=2">2</a> <a className="pageButtonFont" href="/store/?page=3">3</a> <a className="pageButtonFont" href="/store/?page=4">4</a> <a className="pageButtonFont" href="/store/?page=5">5</a> <a className="pageButtonFont" href={this.nextPageUrl}>></a>
+                </div>
+                </div>
+            </div>
         )
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
-        totalCost: state.totalCost,
-        productCart: state.productCart
-    }
-}
 
-let mapDispatchToProps = (dispatch) => {
-    
-    return{
-        // onAddProduct : (productData) => dispatch(addProduct(productData))
-        }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Container)
+export default Container

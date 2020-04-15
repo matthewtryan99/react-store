@@ -11,10 +11,8 @@ let templateReducer = (state, action) => {
         }
     }
 
-
     switch (action.type) {
         case ADD:
-        // console.log(action.data)
             return {
                 ...state,
                 totalCost: state.totalCost + action.data.price.current.value,
@@ -24,13 +22,13 @@ let templateReducer = (state, action) => {
         case DELETE:
             //[{productName- oranges, productPrice}, {productName- apples, productPrice}, {productName- banans, productPrice}]
             let updatedArray = state.productCart.filter(productObj => {
-                return productObj.productName != action.productData.productName
+                return productObj.id != action.id.id
 
             })
 
             return {
                 ...state,
-                totalCost: state.totalCost - parseInt(action.productData.price),
+                totalCost: state.totalCost - action.id.price.current.value,
                 productCart: updatedArray
             }
 

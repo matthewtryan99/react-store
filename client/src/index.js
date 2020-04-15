@@ -19,7 +19,7 @@ ReactDOM.render(
       <BaseLayout>
         <Switch>
           <Route exact path='/' component={App} />
-          <Route exact path='/container' component={Container} />
+          <Route exact path='/store' component={Container} />
           <Route exact path='/cart' component={Cart} />
         </Switch>
       </BaseLayout>

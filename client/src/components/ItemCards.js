@@ -11,14 +11,13 @@ export class ItemCards extends Component {
 
     addToCart = (e) => {
         this.props.addProduct(this.props.product)
-        console.log(this.props)
     }
 
     render() {
         return (
             <div>
             <div className="imgCardCont">
-                <img src={this.props.imgUrl} alt="Smiley face" className="itemImg" onClick={()=>{console.log(this.props)}}></img>
+                <img src={this.props.imgUrl} alt="Smiley face" key={this.props.product.id} className="itemImg" ></img>
                 <br />
                 {this.props.product.name}
             </div>
@@ -30,8 +29,8 @@ export class ItemCards extends Component {
 
 let mapStateToProps = (state) => {
     return {
-        totalCost: state.totalCost,
-        productCart: state.productCart
+        totalCost: state.template.totalCost,
+        productCart: state.template.productCart
     }
 }
 

@@ -17,16 +17,15 @@ export class ShoppingCart extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {
+                    {
                         this.props.productCart.map((obj, index)=>{
                             return <tr key={index}>
-                                <td>{obj.productName}</td>
-                                <td>{obj.productPrice}</td>
-                                <td onClick={()=>this.props.onDeleteProduct(obj)}></td>
+                                <td>{obj.name}</td>
+                                <td>{obj.price.current.text}</td>
+                                <td onClick={()=>this.props.onDeleteProduct(obj)}>X</td>
                             </tr>
                         })
-                    } */}
-                    <button onClick={()=>{console.log(this.props)}}>test</button>
+                    }
                 </tbody>
             </table>
             </>
@@ -36,15 +35,15 @@ export class ShoppingCart extends Component {
 
 let mapStateToProps = (state) => {
     return {
-        totalCost: state.totalCost,
-        productCart: state.productCart
+        totalCost: state.template.totalCost,
+        productCart: state.template.productCart
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     
     return{
-        onDeleteProduct : (productData) => dispatch(deleteProduct(productData))
+        onDeleteProduct : (id) => dispatch(deleteProduct(id))
         }
 }
 
