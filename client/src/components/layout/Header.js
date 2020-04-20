@@ -8,7 +8,7 @@ import '../../css/main.css'
 function Header() {
     return (
             <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand><Link to="/" className="navBarItem">Generic Clothing Store</Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">

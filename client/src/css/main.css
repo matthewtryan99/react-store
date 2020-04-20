@@ -61,7 +61,31 @@
 
 .shoppingCart{
     width: 100vw;
+    min-height: 67vh;
+}
+
+.footer{
+    min-height: 150px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+}
+
+.footer-words{
+    color: white;
+}
+
+.storeRedirect{
+    min-height: 67vh;
+    background-image: url("https://content.asos-media.com/-/media/homepages/unisex/generic-hp/apr-2019/asos-summer-generic-hp-desktop-new.jpg");
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 150px;
+}
+
+.buttons{
+    background-color: grey;
+    width: 200px;
+    border-color: gray;
 }

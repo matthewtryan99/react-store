@@ -100,7 +100,7 @@ export class Container extends Component {
                 }
                 <div className="d-flex screenWidth justify-content-end">
                 <div className="pageButtonSize d-flex justify-content-between">
-                    <Link  to={this.previousPage} onClick={this.newClothes}> {this.previous} </Link>    <Link  to="/store/?page=1" onClick={()=>{this.newClothes(1)}}>1</Link> <Link  to="/store/?page=2" onClick={()=>{this.newClothes(2)}}>2</Link> <Link  to="/store/?page=3" onClick={()=>{this.newClothes(3)}}>3</Link> <Link  to="/store/?page=4" onClick={()=>{this.newClothes(4)}}>4</Link> <Link  to="/store/?page=5" onClick={()=>{this.newClothes(5)}}>5</Link> <Link  to={this.nextPageUrl}>></Link>
+                <Link  to="/store/?clothing=men" onClick={()=>{this.newClothes(1)}}>1</Link> <Link  to="/store/?clothing=men" onClick={()=>{this.newClothes(2)}}>2</Link> <Link  to="/store/?clothing=men" onClick={()=>{this.newClothes(3)}}>3</Link> <Link  to="/store/?clothing=men" onClick={()=>{this.newClothes(4)}}>4</Link> <Link  to="/store/?clothing=men" onClick={()=>{this.newClothes(5)}}>5</Link>
                 </div>
                 </div>
             </div>

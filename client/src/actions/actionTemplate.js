@@ -1,4 +1,4 @@
-import {ADD, DELETE} from './actionTypes'
+import {ADD, DELETE, CLEAR} from './actionTypes'
 
 export const addProduct = (productData) => {
     return {
@@ -11,5 +11,11 @@ export const deleteProduct = (id) => {
     return{
         type: DELETE,
         id
+    }
+}
+
+export const clearProduct = () => {
+    return{
+        type: CLEAR
     }
 }

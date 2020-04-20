@@ -1,4 +1,4 @@
-import {ADD, DELETE} from '../actions/actionTypes'
+import {ADD, DELETE, CLEAR} from '../actions/actionTypes'
 
 let templateReducer = (state, action) => {
 
@@ -30,7 +30,12 @@ let templateReducer = (state, action) => {
                 totalCost: state.totalCost - action.id.price.value,
                 productCart: updatedArray
             }
-
+        case CLEAR:
+            return{
+                ...state,
+                totalCost: 0,
+                productCart: []
+            }
         default:
             return state;
     }
