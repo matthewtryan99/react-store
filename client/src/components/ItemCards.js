@@ -5,19 +5,22 @@ import {addProduct} from '../actions/actionTemplate'
 
 export class ItemCards extends Component {
 
-    constructor(props){
-        super(props);
-    }
+
 
     addToCart = (e) => {
+
+
         this.props.addProduct(this.props.product)
+
+        console.log(this.props.product)
+
     }
 
     render() {
         return (
-            <div>
+            <div className="itemCard">
             <div className="imgCardCont">
-                <img src={this.props.imgUrl} alt="Smiley face" key={this.props.product.id} className="itemImg" ></img>
+                <img src={this.props.product.images[0].url} alt="Smiley face" key={this.props.product.id} className="itemImg" ></img>
                 <br />
                 {this.props.product.name}
             </div>
@@ -28,7 +31,7 @@ export class ItemCards extends Component {
 }
 
 let mapStateToProps = (state) => {
-    return {
+    return { 
         totalCost: state.template.totalCost,
         productCart: state.template.productCart
     }

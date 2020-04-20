@@ -1,9 +1,9 @@
 import {ADD, DELETE} from './actionTypes'
 
-export const addProduct = (obj) => {
+export const addProduct = (productData) => {
     return {
         type: ADD,
-        data: obj
+        data: productData
     }
 }
 

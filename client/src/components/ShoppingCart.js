@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {deleteProduct} from '../actions/actionTemplate'
+import { Button, Table } from 'react-bootstrap'
 
 export class ShoppingCart extends Component {
 
@@ -8,12 +9,12 @@ export class ShoppingCart extends Component {
     render() {
         return (
             <>
+            {/* <div className="shoppingCart">
             <table>
                 <thead>
                     <tr>
-                        <th>Product Name</th>
-                        <th>Product Price</th>
-                        <th>#</th>
+                        
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,13 +22,48 @@ export class ShoppingCart extends Component {
                         this.props.productCart.map((obj, index)=>{
                             return <tr key={index}>
                                 <td>{obj.name}</td>
-                                <td>{obj.price.current.text}</td>
-                                <td onClick={()=>this.props.onDeleteProduct(obj)}>X</td>
+                                <td>{obj.price.formattedValue}</td>
+                                <td ><Button onClick={()=>this.reloadCart(obj)}>X</Button></td>
                             </tr>
                         })
                     }
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>$ {this.props.totalCost}</td>
+                    </tr>
                 </tbody>
             </table>
+                    <br />
+            </div>
+            <div className="shoppingCart">
+
+            </div> */}
+
+            <Table striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>X</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        this.props.productCart.map((obj, index)=>{
+                            return <tr key={index}>
+                                <td>{obj.name}</td>
+                                <td>{obj.price.formattedValue}</td>
+                                <td ><Button onClick={()=>this.props.onDeleteProduct(obj)} className="bg-danger">X</Button></td>
+                            </tr>
+                        })
+                    }
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>$ {this.props.totalCost}</td>
+                    </tr>
+                </tbody>
+                </Table>
+                <Button className="bg-danger">Checkout</Button>
             </>
         )
     }

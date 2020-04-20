@@ -15,20 +15,19 @@ let templateReducer = (state, action) => {
         case ADD:
             return {
                 ...state,
-                totalCost: state.totalCost + action.data.price.current.value,
+                totalCost: state.totalCost + action.data.price.value,
                 productCart: state.productCart.concat(action.data)
             }
 
         case DELETE:
             //[{productName- oranges, productPrice}, {productName- apples, productPrice}, {productName- banans, productPrice}]
             let updatedArray = state.productCart.filter(productObj => {
-                return productObj.id != action.id.id
+                return (productObj.code !== action.id.code)
 
             })
-
             return {
                 ...state,
-                totalCost: state.totalCost - action.id.price.current.value,
+                totalCost: state.totalCost - action.id.price.value,
                 productCart: updatedArray
             }
 

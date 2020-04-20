@@ -7,7 +7,7 @@
 }
 
 .screenWidth{
-    width: 75vw;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -18,4 +18,50 @@
 
 .pageButtonFont{
     color: black
+}
+
+.sticky-side-nav{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 20px;
+    position: sticky;
+    -webkit-position: sticky;
+    min-height: 100vh;
+}
+
+.item-margins{
+    margin-bottom: 25px;
+}
+
+.itemCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.homeImg{
+    width: 100vw;
+    margin:0;
+}
+
+.navBarItem{
+    width: 75vw;
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.full-width{
+    width: 100vw;
+}
+
+.shoppingCart{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

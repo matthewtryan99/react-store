@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import '../css/main.css'
+import {Link} from 'react-router-dom'
 
 export class StoreSideBar extends Component {
     render() {
         return (
-            <div className="sticky-side-nav">
-                <a href="#">Test 1</a>
-                <a href="#">Test 2</a>
-                <a href="#">Test 3</a>
-                <a href="#">Test 4</a>
+            <div className="sticky-side-nav col-3">
+                <Link to="/store/?clothing=men">Men</Link>
+                <Link to="/store/?clothing=women">Women</Link>
+                <Link to="/store/?clothing=kids">Kids</Link>
             </div>
         )
     }
